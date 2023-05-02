@@ -1,5 +1,4 @@
-$textColor: #5c6a79;
-$textColorHighlight: #1c2a39;
+@import '@/styles/mixinsAndVariables.scss';
 .header {
   padding: 47px 0 40px 0;
   position: sticky;
@@ -9,11 +8,11 @@ $textColorHighlight: #1c2a39;
   z-index: 1000;
   background-color: #fff;
   .container {
+    @include container;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-
   .nav {
     ul {
       display: flex;

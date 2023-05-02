@@ -1,5 +1,8 @@
 'use client'
 import styles from './Header.module.scss'
+import userIcon from '../../../public/img/userIcon.png'
+import cartIcon from '../../../public/img/cartIcon.png'
+import Image from 'next/image'
 
 export default function Header() {
   return (
@@ -28,17 +31,12 @@ export default function Header() {
           <ul>
             <li>
               <button>
-                <img src="./src/img/userIcon.png" alt="user" />
-              </button>
-            </li>
-            <li>
-              <button>
-                <img src="./src/img/searchIcon.png" alt="search" />
+                <Image src={userIcon} alt="user" />
               </button>
             </li>
             <li>
               <button className={styles.cartBtn}>
-                <img src="./src/img/cartIcon.png" alt="cart" />
+                <Image src={cartIcon} alt="cart" />
                 <svg
                   width="13"
                   height="13"

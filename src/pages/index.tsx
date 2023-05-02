@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '@/styles/Home.module.scss'
+import Slider from '@/components/Slider'
 
 export default function Home() {
   return (
@@ -12,7 +13,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.home}>
-        <h1>Hello Main</h1>
+        <div className={styles.container}>
+          <Slider />
+        </div>
       </div>
     </>
   )

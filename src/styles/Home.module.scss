@@ -1,2 +1,6 @@
+@import './mixinsAndVariables.scss';
 .home {
+  .container {
+    @include container;
+  }
 }
