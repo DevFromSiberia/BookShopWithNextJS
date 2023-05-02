@@ -5,6 +5,7 @@
   margin-top: 17px;
 }
 .swiper-pagination-bullet {
+  cursor: pointer;
   display: block;
   width: 12px;
   height: 12px;
@@ -16,3 +17,5 @@
   display: block;
   background-color: #9e98dc;
 }
+
+//Styles imported in globals.scss

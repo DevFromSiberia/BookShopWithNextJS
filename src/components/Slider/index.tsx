@@ -1,3 +1,4 @@
+'use client'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper'
 import Image from 'next/image'
@@ -11,10 +12,7 @@ function Slider() {
     <Swiper
       modules={[Pagination]}
       pagination={{ clickable: true }}
-      spaceBetween={50}
       slidesPerView={1}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
       loop={true}
     >
       <SwiperSlide>
