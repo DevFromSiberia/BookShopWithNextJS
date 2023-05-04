@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from '@/styles/Home.module.scss'
 import Slider from '@/components/Slider'
 import Categories from '@/components/Categories'
+import Books from '@/components/Books'
 
 export default function Home() {
   return (
@@ -16,10 +17,10 @@ export default function Home() {
       <div className={styles.home}>
         <div className={styles.container}>
           <Slider />
-          <section className={styles.books}>
+          <section className={styles.booksSection}>
             <div className={styles.container}>
               <Categories />
-              {/* <Books /> */}
+              <Books />
             </div>
           </section>
         </div>

@@ -1,3 +1,4 @@
+'use client'
 import styles from './Categories.module.scss'
 
 export default function Categories() {
