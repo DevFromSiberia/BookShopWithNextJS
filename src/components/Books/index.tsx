@@ -6,21 +6,14 @@ export default function Books() {
     <ul className={styles.books}>
       <Book
         imageUrl={''}
-        authors={'Her Pupkin'}
+        authors={['Her Pupkin_1']}
         title={'Kavabanga'}
         averageRating={3.7}
         ratingCount={10}
-        description={'as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd'}
-        price={100}
-      />
-      <Book
-        imageUrl={''}
-        authors={'Her Pupkin'}
-        title={'Kavabanga'}
-        averageRating={5}
-        ratingCount={5}
-        description={'as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd'}
-        price={100}
+        description={
+          'as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd'
+        }
+        price={{ amount: 4356.24, currencyCode: 'RUB' }}
       />
     </ul>
   )
