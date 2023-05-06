@@ -5,11 +5,11 @@ export default function Books() {
   return (
     <ul className={styles.books}>
       <Book
-        imageUrl={'https://via.placeholder.com/500'}
+        imageUrl={''}
         authors={'Her Pupkin'}
         title={'Kavabanga'}
-        averageRating={5}
-        ratingCount={5}
+        averageRating={3.7}
+        ratingCount={10}
         description={'as;ldfjas;jf  kasdjg; kl ads;gj  agjfjkhgd'}
         price={100}
       />

@@ -1,6 +1,7 @@
 'use client'
 import styles from './Book.module.scss'
 import { Book } from '../types'
+import formatAvRate from '@/utils/formatAvRate'
 export default function Book({
   imageUrl,
   authors,
@@ -24,8 +25,8 @@ export default function Book({
         <p className={styles.author}>{authors}</p>
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.rate}>
-          {averageRating}
-          <span>{ratingCount}</span>
+          {formatAvRate(averageRating)}
+          <span>{ratingCount} revies</span>
         </div>
         <p className={styles.text}>{description}</p>
         <div className={styles.price}>{price}</div>
