@@ -28,7 +28,7 @@ export default function Book({
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.rate}>
           {formatAvRate(averageRating)}
-          <span>{ratingCount} revies</span>
+          <span>{ratingCount} reviews</span>
         </div>
         <p className={styles.text}>{formatDescr(description)}</p>
         <div className={styles.price}>

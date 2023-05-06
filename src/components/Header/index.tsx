@@ -3,13 +3,14 @@ import styles from './Header.module.scss'
 import userIcon from '../../../public/img/userIcon.png'
 import cartIcon from '../../../public/img/cartIcon.png'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <h1 className={styles.logo}>
-          <a href="#">Bookshop</a>
+          <Link href="/">Bookshop</Link>
         </h1>
         <nav className={styles.nav}>
           <ul>
@@ -30,12 +31,12 @@ export default function Header() {
         <div className={styles.buttons}>
           <ul>
             <li>
-              <button>
+              <Link href="/profile">
                 <Image src={userIcon} alt="user" />
-              </button>
+              </Link>
             </li>
             <li>
-              <button className={styles.cartBtn}>
+              <Link href="/cart" className={styles.cartBtn}>
                 <Image src={cartIcon} alt="cart" />
                 <svg
                   width="13"
@@ -48,7 +49,7 @@ export default function Header() {
                     0
                   </text>
                 </svg>
-              </button>
+              </Link>
             </li>
           </ul>
         </div>
