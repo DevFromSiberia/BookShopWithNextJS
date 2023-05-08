@@ -1,6 +1,6 @@
 'use client'
 import styles from './Book.module.scss'
-import { Book } from '../types'
+import { BookType } from '../types'
 import formatAvRate from '@/utils/formatAvRate'
 import formatDescr from '@/utils/formatDescr'
 import formatAuthor from '@/utils/formatAuthor'
@@ -12,7 +12,7 @@ export default function Book({
   ratingCount,
   description,
   price,
-}: Book) {
+}: BookType) {
   return (
     <li className={styles.book}>
       <div
@@ -25,10 +25,10 @@ export default function Book({
       ></div>
       <div className={styles.descr}>
         <p className={styles.author}>{formatAuthor(authors)}</p>
-        <h2 className={styles.title}>{title}</h2>
+        <h2 className={styles.title}>{title && title}</h2>
         <div className={styles.rate}>
           {formatAvRate(averageRating)}
-          <span>{ratingCount} reviews</span>
+          <span>{ratingCount ? ratingCount : 0} reviews</span>
         </div>
         <p className={styles.text}>{formatDescr(description)}</p>
         <div className={styles.price}>

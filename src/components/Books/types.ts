@@ -1,10 +1,9 @@
-import { StaticImageData } from 'next/image'
 type Price = {
   amount: number
   currencyCode: string
 }
 
-interface Book {
+interface BookType {
   imageUrl: string
   authors: string[]
   title: string
@@ -14,4 +13,4 @@ interface Book {
   price: Price
 }
 
-export { Book }
+export { BookType }

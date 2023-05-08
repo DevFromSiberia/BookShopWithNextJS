@@ -1,11 +1,75 @@
 import Head from 'next/head'
+import { GetStaticProps } from 'next'
 import Image from 'next/image'
 import styles from '@/styles/Home.module.scss'
 import Slider from '@/components/Slider'
 import Categories from '@/components/Categories'
 import Books from '@/components/Books'
+import { useEffect, useState } from 'react'
 
-export default function Home() {
+export const getStaticProps: GetStaticProps<{
+  books: any
+}> = async () => {
+  const res = await fetch(
+    `http://localhost:3000/api/books?subject=Architecture&startIndex=${0}`
+  )
+  const data = await res.json()
+  return {
+    props: {
+      books: data.booksData.items,
+    },
+  }
+}
+
+export default function Home({ books }: any) {
+  const categories = [
+    'Architecture',
+    'Art & Fashion',
+    'Biography',
+    'Business',
+    'Crafts & Hobbies',
+    'Drama',
+    'Fiction',
+    'Food & Drink',
+    'Health & Wellbeing',
+    'History & Politics',
+    'Humor',
+    'Poetry',
+    'Psychology',
+    'Science',
+    'Technology',
+    'Travel & Maps',
+  ]
+  const [activeCategory, setActiveCategory] = useState(0)
+  const [curBooks, setBooks] = useState([])
+  const [startIndex, setStartIndex] = useState(0)
+
+  useEffect(() => {
+    setBooks(books)
+  }, [])
+
+  useEffect(() => {
+    fetch(
+      `http://localhost:3000/api/books?subject=${
+        categories[activeCategory]
+      }&startIndex=${0}`
+    )
+      .then((data) => data.json())
+      .then((data) => setBooks(data.booksData.items))
+  }, [activeCategory])
+
+  useEffect(() => {
+    fetch(
+      `http://localhost:3000/api/books?subject=${categories[activeCategory]}&startIndex=${startIndex}`
+    )
+      .then((data) => data.json())
+      .then((data) => setBooks(data.booksData.items))
+  }, [startIndex])
+
+  const loadMoreHandler = () => {
+    setStartIndex(startIndex + 6)
+  }
+
   return (
     <>
       <Head>
@@ -19,9 +83,19 @@ export default function Home() {
           <Slider />
           <section className={styles.booksSection}>
             <div className={styles.container}>
-              <Categories />
-              <Books />
+              <Categories
+                categories={categories}
+                active={activeCategory}
+                setActiveCategory={setActiveCategory}
+              />
+              <Books books={curBooks} />
             </div>
+            <button
+              onClick={() => loadMoreHandler()}
+              className={styles.moreBtn}
+            >
+              LoadMore
+            </button>
           </section>
         </div>
       </div>

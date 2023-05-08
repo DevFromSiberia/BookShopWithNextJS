@@ -1,13 +1,22 @@
 'use client'
 import styles from './Categories.module.scss'
-
-export default function Categories() {
+import { Categories } from './types'
+export default function Categories({
+  categories,
+  active,
+  setActiveCategory,
+}: Categories) {
   return (
     <ul className={styles.categories}>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
+      {categories.map((category, index) => (
+        <li
+          className={active === index ? styles.active : ''}
+          id={index.toString()}
+          onClick={() => setActiveCategory(index)}
+        >
+          {category}
+        </li>
+      ))}
     </ul>
   )
 }
