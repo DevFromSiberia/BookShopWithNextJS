@@ -49,8 +49,9 @@
   .buttons {
     ul {
       display: flex;
+      position: relative;
       li {
-        margin-right: 42px;
+        margin-right: 95px;
         &:last-child {
           margin-right: 0px;
         }
@@ -72,6 +73,7 @@
         }
       }
       img {
+        cursor: pointer;
         width: 15px;
       }
     }

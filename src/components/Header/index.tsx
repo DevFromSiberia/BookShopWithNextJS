@@ -4,8 +4,11 @@ import userIcon from '../../../public/img/userIcon.png'
 import cartIcon from '../../../public/img/cartIcon.png'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
+import LoginForm from './LoginFrom'
 
 export default function Header() {
+  const [userFormActive, setLoginFormActive] = useState(false)
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -31,9 +34,12 @@ export default function Header() {
         <div className={styles.buttons}>
           <ul>
             <li>
-              <Link href="/profile">
-                <Image src={userIcon} alt="user" />
-              </Link>
+              <Image
+                onClick={() => setLoginFormActive(!userFormActive)}
+                src={userIcon}
+                alt="user"
+              />
+              {userFormActive && <LoginForm />}
             </li>
             <li>
               <Link href="/cart" className={styles.cartBtn}>
