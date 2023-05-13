@@ -1,10 +1,10 @@
 import styles from '@/styles/Cart.module.scss'
-import { Cart, CartItem } from './types'
+import { Cart, CartItem } from '../types'
 import formatAuthor from '@/utils/formatAuthor'
 import formatAvRate from '@/utils/formatAvRate'
-import { useAppSelector, useAppDispatch } from './hooks/redux'
+import { useAppSelector, useAppDispatch } from '../hooks/redux'
 import { useEffect, useState } from 'react'
-import { cartSlice } from './store/cartSlice'
+import { cartSlice } from '../store/cartSlice'
 
 export default function Cart() {
   const dispatch = useAppDispatch()

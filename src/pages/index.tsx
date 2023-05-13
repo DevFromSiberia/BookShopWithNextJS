@@ -6,14 +6,14 @@ import Slider from '@/components/Slider'
 import Categories from '@/components/Categories'
 import Books from '@/components/Books'
 import { useEffect, useState } from 'react'
-import { useAppDispatch } from './hooks/redux'
-import { cartSlice } from './store/cartSlice'
+import { useAppDispatch } from '../hooks/redux'
+import { cartSlice } from '../store/cartSlice'
 
 export const getStaticProps: GetStaticProps<{
   books: any
 }> = async () => {
   const res = await fetch(
-    `http://localhost:3000/api/books?subject=Architecture&startIndex=${0}`
+    `${process.env.API_HOST}/books?subject=Architecture&startIndex=${0}`
   )
   const data = await res.json()
   return {
@@ -52,7 +52,7 @@ export default function Home({ books }: any) {
 
   useEffect(() => {
     fetch(
-      `http://localhost:3000/api/books?subject=${
+      `${process.env.API_HOST}/books?subject=${
         categories[activeCategory]
       }&startIndex=${0}`
     )
@@ -62,7 +62,7 @@ export default function Home({ books }: any) {
 
   useEffect(() => {
     fetch(
-      `http://localhost:3000/api/books?subject=${categories[activeCategory]}&startIndex=${startIndex}`
+      `${process.env.API_HOST}/books?subject=${categories[activeCategory]}&startIndex=${startIndex}`
     )
       .then((data) => data.json())
       .then((data) => setBooks(data.booksData.items))

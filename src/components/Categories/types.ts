@@ -4,4 +4,4 @@ interface Categories {
   setActiveCategory: Function
 }
 
-export { Categories }
+export type { Categories }

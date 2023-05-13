@@ -15,4 +15,4 @@ interface BookType {
   buyNowHandler: Function
 }
 
-export { BookType, Price }
+export type { BookType, Price }

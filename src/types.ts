@@ -20,4 +20,4 @@ interface Cart {
   items: CartItem[]
   total: number
 }
-export { Cart, CartItem, CartBook }
+export type { Cart, CartItem, CartBook }
