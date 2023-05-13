@@ -10,6 +10,7 @@ export default function Categories({
     <ul className={styles.categories}>
       {categories.map((category, index) => (
         <li
+          key={index}
           className={active === index ? styles.active : ''}
           id={index.toString()}
           onClick={() => setActiveCategory(index)}

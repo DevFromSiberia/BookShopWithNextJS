@@ -6,12 +6,14 @@ import formatDescr from '@/utils/formatDescr'
 import formatAuthor from '@/utils/formatAuthor'
 export default function Book({
   imageUrl,
+  id,
   authors,
   title,
   averageRating,
   ratingCount,
   description,
   price,
+  buyNowHandler,
 }: BookType) {
   return (
     <li className={styles.book}>
@@ -39,7 +41,9 @@ export default function Book({
           )}{' '}
           {price.amount}
         </div>
-        <button className={styles.buyBtn}>buy now</button>
+        <button onClick={() => buyNowHandler(id)} className={styles.buyBtn}>
+          buy now
+        </button>
       </div>
     </li>
   )

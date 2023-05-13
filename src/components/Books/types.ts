@@ -4,6 +4,7 @@ type Price = {
 }
 
 interface BookType {
+  id: string
   imageUrl: string
   authors: string[]
   title: string
@@ -11,6 +12,7 @@ interface BookType {
   ratingCount: number
   description: string
   price: Price
+  buyNowHandler: Function
 }
 
-export { BookType }
+export { BookType, Price }

@@ -6,6 +6,8 @@ import Slider from '@/components/Slider'
 import Categories from '@/components/Categories'
 import Books from '@/components/Books'
 import { useEffect, useState } from 'react'
+import { useAppDispatch } from './hooks/redux'
+import { cartSlice } from './store/cartSlice'
 
 export const getStaticProps: GetStaticProps<{
   books: any
@@ -22,6 +24,7 @@ export const getStaticProps: GetStaticProps<{
 }
 
 export default function Home({ books }: any) {
+  const dispatch = useAppDispatch()
   const categories = [
     'Architecture',
     'Art & Fashion',
@@ -43,7 +46,6 @@ export default function Home({ books }: any) {
   const [activeCategory, setActiveCategory] = useState(0)
   const [curBooks, setBooks] = useState([])
   const [startIndex, setStartIndex] = useState(0)
-
   useEffect(() => {
     setBooks(books)
   }, [])
@@ -70,6 +72,11 @@ export default function Home({ books }: any) {
     setStartIndex(startIndex + 6)
   }
 
+  const buyNowHandler = (id: string) => {
+    const clickedBook = curBooks.find((book: any) => book.id === id)
+    dispatch(cartSlice.actions.addCartItem(clickedBook))
+  }
+
   return (
     <>
       <Head>
@@ -88,7 +95,7 @@ export default function Home({ books }: any) {
                 active={activeCategory}
                 setActiveCategory={setActiveCategory}
               />
-              <Books books={curBooks} />
+              <Books buyNowHandler={buyNowHandler} books={curBooks} />
             </div>
             <button
               onClick={() => loadMoreHandler()}
