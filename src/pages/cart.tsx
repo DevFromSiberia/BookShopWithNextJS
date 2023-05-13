@@ -1,9 +1,9 @@
 import styles from '@/styles/Cart.module.scss'
-import { Cart } from './types'
+import { Cart, CartItem } from './types'
 import formatAuthor from '@/utils/formatAuthor'
 import formatAvRate from '@/utils/formatAvRate'
 import { useAppSelector, useAppDispatch } from './hooks/redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { cartSlice } from './store/cartSlice'
 
 export default function Cart() {
@@ -15,6 +15,7 @@ export default function Cart() {
     const curCart = JSON.parse(parsedLSstate.cart)
     dispatch(cartSlice.actions.getCartItems(curCart.items))
   }, [])
+
   return (
     <div className={styles.cart}>
       <div className={styles.container}>
@@ -29,7 +30,7 @@ export default function Cart() {
           {+items.length ? (
             items.map((item) => {
               return (
-                <li>
+                <li key={item.id}>
                   <div className={styles.book}>
                     <div
                       style={{
@@ -59,7 +60,13 @@ export default function Cart() {
                   </div>
                   <div className={styles.quantity}>
                     <div className={styles.counter}>
-                      <button>
+                      <button
+                        onClick={() => {
+                          dispatch(
+                            cartSlice.actions.changeQantity(['minus', item.id])
+                          )
+                        }}
+                      >
                         <svg
                           width="22"
                           height="5"
@@ -74,7 +81,13 @@ export default function Cart() {
                         </svg>
                       </button>
                       <span>{item.qantity}</span>
-                      <button>
+                      <button
+                        onClick={() => {
+                          dispatch(
+                            cartSlice.actions.changeQantity(['plus', item.id])
+                          )
+                        }}
+                      >
                         <svg
                           width="21"
                           height="20"
@@ -109,13 +122,8 @@ export default function Cart() {
           )}
         </ul>
         <div className={styles.total}>
-          Total price:{' '}
-          {total.currencyCode === 'RUB' ? (
-            <span>&#8381;</span>
-          ) : (
-            total.currencyCode
-          )}{' '}
-          {total.amount}
+          Total price: <span>&#8381; </span>
+          {total.toFixed(2)}
         </div>
         <button className={styles.checkout}>checkout</button>
       </div>

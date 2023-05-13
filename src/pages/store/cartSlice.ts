@@ -1,13 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { Cart, CartItem, CartBook } from '../types'
+import { Cart, CartItem } from '../types'
 
 const initialState: Cart = {
   items: [],
-  total: {
-    amount: 0,
-    currencyCode: '',
-  },
+  total: 0,
 }
 
 export const cartSlice = createSlice({
@@ -16,6 +13,9 @@ export const cartSlice = createSlice({
   reducers: {
     getCartItems(state, action: PayloadAction<any>) {
       state.items = action.payload
+      action.payload.forEach((item: CartItem) => {
+        state.total += item.book.price.amount * (item.qantity / 2)
+      })
     },
     addCartItem(state, action: PayloadAction<any>) {
       const LSstate = localStorage.getItem('persist:root')
@@ -44,6 +44,41 @@ export const cartSlice = createSlice({
         curCart.items.push(item)
       } else {
         itemInCart.qantity++
+      }
+      const newCart = JSON.stringify(curCart)
+      parsedLSstate.cart = newCart
+      localStorage.setItem('persist:root', JSON.stringify(parsedLSstate))
+    },
+    changeQantity(state, action: PayloadAction<any>) {
+      const LSstate = localStorage.getItem('persist:root')
+      const parsedLSstate = LSstate ? JSON.parse(LSstate) : {}
+      const curCart = JSON.parse(parsedLSstate.cart)
+      const item = curCart.items.find(
+        (item: CartItem) => item.id === action.payload[1]
+      )
+      const itemIndex = curCart.items.findIndex(
+        (item: CartItem) => item.id === action.payload[1]
+      )
+      const stateItem = state.items.find(
+        (item: CartItem) => item.id === action.payload[1]
+      )
+      const stateItemIndex = state.items.findIndex(
+        (item: CartItem) => item.id === action.payload[1]
+      )
+      if (action.payload[0] === 'minus') {
+        stateItem && stateItem.qantity--
+        item.qantity--
+        state.total -= item.book.price.amount
+        if (item.qantity <= 0) {
+          item.qantity = 0
+          stateItem && (stateItem.qantity = 0)
+          curCart.items.splice(itemIndex, 1)
+          state.items.splice(stateItemIndex, 1)
+        }
+      } else {
+        stateItem && stateItem.qantity++
+        item.qantity++
+        state.total += item.book.price.amount
       }
       const newCart = JSON.stringify(curCart)
       parsedLSstate.cart = newCart

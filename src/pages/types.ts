@@ -18,9 +18,6 @@ interface CartItem {
 
 interface Cart {
   items: CartItem[]
-  total: {
-    amount: number
-    currencyCode: string
-  }
+  total: number
 }
 export { Cart, CartItem, CartBook }
