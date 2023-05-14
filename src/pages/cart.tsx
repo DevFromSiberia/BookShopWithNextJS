@@ -121,10 +121,7 @@ export default function Cart() {
             <p>Cart empty</p>
           )}
         </ul>
-        <div className={styles.total}>
-          Total price: <span>&#8381; </span>
-          {total.toFixed(2)}
-        </div>
+        <div className={styles.total}>Total price: {total.toFixed(2)}</div>
         <button className={styles.checkout}>checkout</button>
       </div>
     </div>
