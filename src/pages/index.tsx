@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import Image from 'next/image'
 import styles from '@/styles/Home.module.scss'
 import Slider from '@/components/Slider'
 import Categories from '@/components/Categories'
@@ -51,18 +50,14 @@ export default function Home({ books }: any) {
   }, [])
 
   useEffect(() => {
-    fetch(
-      `${process.env.API_HOST}/books?subject=${
-        categories[activeCategory]
-      }&startIndex=${0}`
-    )
+    fetch(`/api/books?subject=${categories[activeCategory]}&startIndex=${0}`)
       .then((data) => data.json())
       .then((data) => setBooks(data.booksData.items))
   }, [activeCategory])
 
   useEffect(() => {
     fetch(
-      `${process.env.API_HOST}/books?subject=${categories[activeCategory]}&startIndex=${startIndex}`
+      `/api/books?subject=${categories[activeCategory]}&startIndex=${startIndex}`
     )
       .then((data) => data.json())
       .then((data) => setBooks(data.booksData.items))

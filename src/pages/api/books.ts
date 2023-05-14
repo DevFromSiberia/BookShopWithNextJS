@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import CONFIG from '@/config'
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -8,7 +7,7 @@ export default async function handler(
   const { subject, startIndex } = req.query
   const gbooksReqParams = new URLSearchParams()
   gbooksReqParams.set('q', `Subject:${subject}`)
-  gbooksReqParams.set('key', `${CONFIG.KEY}`)
+  gbooksReqParams.set('key', `${process.env.G_API_KEY}`)
   gbooksReqParams.set('startIndex', `${startIndex}`)
   gbooksReqParams.set('maxResults', `${maxResults}`)
   gbooksReqParams.set('langRestrict', `en`)
