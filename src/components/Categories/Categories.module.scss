@@ -37,3 +37,35 @@
     bottom: 10px;
   }
 }
+
+@media (max-width: 1000px) {
+  .categories {
+    li {
+      margin-bottom: 13px;
+    }
+  }
+}
+
+@media (max-width: 590px) {
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 350px) {
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 330px) {
+  .categories {
+    column-gap: 40px;
+  }
+}
