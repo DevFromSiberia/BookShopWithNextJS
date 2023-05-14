@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { GetStaticProps } from 'next'
 import styles from '@/styles/Home.module.scss'
 import Slider from '@/components/Slider'
 import Categories from '@/components/Categories'
@@ -8,9 +7,7 @@ import { useEffect, useState } from 'react'
 import { useAppDispatch } from '../hooks/redux'
 import { cartSlice } from '../store/cartSlice'
 
-export const getStaticProps: GetStaticProps<{
-  books: any
-}> = async () => {
+export async function getServerSideProps() {
   const res = await fetch(
     `${process.env.API_HOST}/books?subject=Architecture&startIndex=${0}`
   )
