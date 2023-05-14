@@ -9,6 +9,7 @@ import LoginForm from './LoginFrom'
 
 export default function Header() {
   const [userFormActive, setLoginFormActive] = useState(false)
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -44,17 +45,6 @@ export default function Header() {
             <li>
               <Link href="/cart" className={styles.cartBtn}>
                 <Image src={cartIcon} alt="cart" />
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 13 13"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="6.5" cy="6.5" r="6.5" fill="#FF353A" />
-                  <text id="cartCounter" y="10" x="3.25" fill="#ffffff">
-                    0
-                  </text>
-                </svg>
               </Link>
             </li>
           </ul>

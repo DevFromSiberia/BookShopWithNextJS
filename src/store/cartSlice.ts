@@ -14,11 +14,7 @@ export const cartSlice = createSlice({
     getCartItems(state, action: PayloadAction<any>) {
       state.items = action.payload
       action.payload.forEach((item: CartItem) => {
-        if (!item.book.price) {
-          state.total += 0
-        } else {
-          state.total += item.book.price.amount * (item.qantity / 2)
-        }
+        state.total += item.book.price.amount * (item.qantity / 2)
       })
     },
     addCartItem(state, action: PayloadAction<any>) {
@@ -40,7 +36,7 @@ export const cartSlice = createSlice({
             ratingCount: action.payload.volumeInfo.ratingsCount,
             price: action.payload.saleInfo.listPrice
               ? action.payload.saleInfo.listPrice
-              : 0,
+              : { amount: 0, currencyCode: '' },
           },
           qantity: 1,
           delivery: 'delivery',

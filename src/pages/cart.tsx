@@ -15,7 +15,6 @@ export default function Cart() {
     const curCart = JSON.parse(parsedLSstate.cart)
     dispatch(cartSlice.actions.getCartItems(curCart.items))
   }, [])
-
   return (
     <div className={styles.cart}>
       <div className={styles.container}>
@@ -109,7 +108,9 @@ export default function Cart() {
                     ) : (
                       item.book.price.currencyCode
                     )}{' '}
-                    {item.book.price.amount}
+                    {item.book.price.amount
+                      ? item.book.price.amount
+                      : 'Not price'}
                   </div>
                   <div className={styles.delivery}>
                     Shipping: {item.delivery}
