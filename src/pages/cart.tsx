@@ -9,6 +9,7 @@ import { cartSlice } from '../store/cartSlice'
 export default function Cart() {
   const dispatch = useAppDispatch()
   const { items, total } = useAppSelector((state) => state.cart)
+  console.log(items)
   useEffect(() => {
     const LSstate = localStorage.getItem('persist:root')
     const parsedLSstate = LSstate ? JSON.parse(LSstate) : {}
