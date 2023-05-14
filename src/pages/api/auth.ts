@@ -11,7 +11,6 @@ export default async function handler(
   const { email, password } = req.body
   // Ваша функция для валидации
   const validatedInfo = validate(email, password)
-  console.log(password)
   if (!validatedInfo) {
     res
       .status(400)

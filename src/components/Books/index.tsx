@@ -5,7 +5,7 @@ import Book from './Book'
 export default function Books({ books, buyNowHandler }: any) {
   return (
     <ul className={styles.books}>
-      {books.map((book: any, index: number) => (
+      {books.map((book: any) => (
         <Book
           key={book.id}
           id={book.id}
